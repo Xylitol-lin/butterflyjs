@@ -1,0 +1,22 @@
+{
+  "name": "butterflyjs",
+  "version": "1.0.0",
+  "authors": [
+    "xylitol_lin <ruheng.lin@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "zepto": "~1.1.6",
+    "requirejs": "~2.1.17",
+    "underscore": "~1.8.2",
+    "backbone": "~1.1.2",
+    "requirejs-text": "~2.0.14"
+  }
+}

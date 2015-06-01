@@ -1,16 +1,25 @@
-var gulp = require('gulp');
-var jshint =  require('gulp-jshint');
-// var stylish = require('jshint-stylish');
+var gulp = require('gulp'),
+	jshint = require('gulp-jshint'),
+	browserSync = require('browser-sync'),
+	reload = browserSync.reload;
 
-gulp.task('watch', function () {
-	gulp.watch('bulid/js/*js', ['js']);
+gulp.task('serve', ['js'], function() {
+	browserSync({
+		server: "./bulid"
+	});
+
+	gulp.watch("bulid/js/*.js", ['js']);
+	gulp.watch(["bulid/*html", "bulid/views/*html", "bulid/css/*.css"]).on('change', reload);
+
 });
 
-gulp.task('js', function () {
-	return gulp.src('bulid/js/*js')
-				.pipe(jshint())
-				.pipe(jshint.reporter('jshint-stylish'));
-
+gulp.task('js', function() {
+	return gulp.src('bulid/js/*.js')
+		.pipe(jshint())
+		.pipe(jshint.reporter('jshint-stylish'))
+		.pipe(reload({
+			stream: true
+		}));
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['serve']);

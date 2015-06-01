@@ -5,7 +5,6 @@ define(['backbone'], function(Backbone){
 
 	var View =  Backbone.View.extend({
 
-		//default event
 		events: {
 			"click a[data-action='back']": "goBack"
 		},
@@ -14,47 +13,30 @@ define(['backbone'], function(Backbone){
 			window.history.back();
 		},
 
-		//add superview & subviews property
-		constructor: function(options){
-			if(options)this.superview = options.superview;
+		initialize: function(options){
 			this.subviews = [];
-
-			Backbone.View.apply(this, arguments);
 		},
 
-		//remove superview & subviews reference
 		remove: function(){
 			Backbone.View.prototype.remove.call(this);
 
-			this.superview = null;
 			_.each(this.subviews, function(subview){
 				subview.remove();
 			});
-		},
-
-		//find a subview
-		//Breadth First Search
-		find: function(id){
-			var result = _.find(this.subviews, function(subview){
-				return subview.el.id == id;
-			});
-
-			if (!result) {
-				var container = _.find(this.subviews, function(subview){
-					return subview.find(id);
-				});
-				result = container.find(id);
-			}
-
-			return result;
 		},
 
 		addSubview: function(view){
 			this.subviews.push(view);
 		},
 
+		setElement: function(element, delegate){
+			Backbone.View.prototype.setElement.call(this, element, delegate);
+		},
+
+
+
 		render: function(){
-			Backbone.View.prototype.render.apply(this, arguments);
+			Backbone.View.prototype.render.call(this, arguments);
 			return this;
 		},
 
@@ -70,22 +52,22 @@ define(['backbone'], function(Backbone){
 		//events
 		onShow: function(){
 			$(window).on('orientationchange', this.onOrientationchange);
-			$(window).on('resize', this.onWindowResize);
-			$(window).on('scroll', this.onWindowScroll);
+      $(window).on('resize', this.onWindowResize);
+      $(window).on('scroll', this.onWindowScroll);
 		},
 		onHide: function(){
 			$(window).off('orientationchange', this.onOrientationchange);
-			$(window).off('resize', this.onWindowResize);
-			$(window).off('scroll', this.onWindowScroll);
+      $(window).off('resize', this.onWindowResize);
+      $(window).off('scroll', this.onWindowScroll);
 		},
 
 		onOrientationchange: function() {
-				this.$('input').blur();
-		},
+        this.$('input').blur();
+    },
 
 		onWindowScroll: function() {},
 
-		onWindowResize: function() {},
+    onWindowResize: function() {},
 
 		route: function(){}
 	});
@@ -125,23 +107,20 @@ define(['backbone'], function(Backbone){
 	// ==================
 	_.extend(View.prototype, {
 
-		doModal: function(){
+		doModal: function(className){
 			// TODO: reserved for shadow effect
 			// this.mask = document.createElement('div');
 			// this.mask.classList.add('butterfly-modal-mask');
 			// document.body.appendChild(this.mask);
-
-			this.$el.addClass('butterfly-modal');
-			this.$el.appendTo(document.body);
-			this.animateSlideInUp();
+			
+			var elem = '<div class="butterfly-modal-mask ' + className + '"></div>';
+			this.$el.append(elem);
+			console.log(window.pageYOffset);
+			$('.' + className).css({top:window.pageYOffset});
 		},
 
-		dismiss: function(){
-			var me = this;
-			this.animateSlideOutDown(function(){
-				me.$el.removeClass('butterfly-modal');
-				me.remove();
-			});
+		dismiss: function(elem){
+			elem.remove();
 		}
 	});
 

@@ -10,16 +10,18 @@ require.config({
 		view: 'src/js/requirejs-butterfly',
 		// lib
 		zepto: 'src/bower_components/zepto/zepto.min',
+		jquery: 'src/bower_components/jquery/dist/jquery.min',
 		underscore: 'src/bower_components/underscore/underscore-min',
 		backbone: 'src/bower_components/backbone/backbone',
-		text: 'src/bower_components/requirejs-text/text'
+		text: 'src/bower_components/requirejs-text/text',
+		spin: 'src/bower_components/spin.js/spin.min'
 	},
 	waitSeconds: 7,
 	shim: {
-		zepto: {exports: '$'},
+		jquery: {exports: '$'},
 		underscore: {exports: '_'},
 		backbone: {
-			deps: ['underscore', 'zepto'],
+			deps: ['underscore', 'jquery'],
 			exports: 'Backbone'
 		}
 	}

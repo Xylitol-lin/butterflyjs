@@ -5,16 +5,16 @@ var gulp = require('gulp'),
 
 gulp.task('serve', ['js'], function() {
 	browserSync({
-		server: "./bulid"
+		server: "./build"
 	});
 
-	gulp.watch("bulid/js/*.js", ['js']);
-	gulp.watch(["bulid/*html", "bulid/views/*html", "bulid/css/*.css"]).on('change', reload);
+	gulp.watch("build/js/*.js", ['js']);
+	gulp.watch(["build/*html", "build/views/*html", "build/css/*.css"]).on('change', reload);
 
 });
 
 gulp.task('js', function() {
-	return gulp.src('bulid/js/*.js')
+	return gulp.src('build/js/*.js')
 		.pipe(jshint())
 		.pipe(jshint.reporter('jshint-stylish'))
 		.pipe(reload({

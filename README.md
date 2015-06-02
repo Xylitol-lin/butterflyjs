@@ -9,7 +9,7 @@
 1. git clone 到本地
 2. npm install
 3. bower install  ***** 到这里，项目的基本构建已经完成。
-4. gulp           ***** 可以开始编写项目，项目目录在 /bulid
+4. gulp           ***** 可以开始编写项目，项目目录在 /build
 
 ### 说明
 

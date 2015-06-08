@@ -12,7 +12,7 @@ require.config({
 		zepto: 'src/bower_components/zepto/zepto.min',
 		underscore: 'src/bower_components/underscore/underscore-min',
 		backbone: 'src/bower_components/backbone/backbone',
-		text: 'src/bower_components/requirejs-text/text'
+		text: 'src/bower_components/requirejs-text/text',
 	},
 	waitSeconds: 7,
 	shim: {

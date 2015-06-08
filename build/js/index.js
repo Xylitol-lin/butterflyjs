@@ -3,11 +3,11 @@ define(['butterfly/view'], function(View){
   return View.extend({
 
     render: function(){
-      console.log('main/subview.html render');
+      console.log('index.html render');
     },
 
     onShow: function(){
-      console.log('main/subview.html onShow');
+      console.log('index.html onShow');
       
     }
 

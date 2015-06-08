@@ -6,17 +6,17 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta http-equiv="pragma" content="no-cache" />
 	<title>Document</title>
-	
+	<link href="src/bower_components/ratchet/dist/css/ratchet.min.css" rel="stylesheet"/>
 	<link href="css/main.css" rel="stylesheet"/>
 </head>
 <body>
 	<div id="main" data-view="$StackView">
-		<div id="main-page" data-view="bulid/js/index">
-			<a href="#/bulid/subview/subview.html">subview</a>
+		<div id="main-page" data-view="js/index">
+			<a href="#/views/subview.html">subview</a>
 		</div>
 	</div>
 
-<script type="text/javascript" src="../src/bower_components/requirejs/require.js" data-main="../src/js/butterfly-amd"></script>
+<script type="text/javascript" src="./src/bower_components/requirejs/require.js" data-main="./src/js/butterfly-amd"></script>
 
 </body>
 </html>

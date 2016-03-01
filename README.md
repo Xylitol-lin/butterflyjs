@@ -25,3 +25,5 @@ gulp.js 的 task 只配置了：自动监测 js 文件，有改动则执行 jshi
 4. gulp 任务，未来应该会增加 browserSync 的支持和更高级 e2e, 单元模块测试，增加生产任务，将 js, css, image 进行自动生产压缩(由于 butterfly.js 运用了 require.js 这里是难点，待解决)。 
 5. 未来会考虑使用 sass 来更加科学地构建项目 css (更好维护)，mustache 作为 html 模版(实在受够了 underscore 的模版了，个人感觉十分难阅读，而且勾起了我 asp 的不愉快回忆，可选项：jade，但是 jade 需要 node 来编译，可能要在 gulp 添加自动化任务)。
 6. 最遥遥无期的一点：重构 butterfly.js 框架。
+
+233
